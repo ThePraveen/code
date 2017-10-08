@@ -12,7 +12,7 @@ var TicketPage = require('../pages/TicketPage.js');
 
     this.report = function(e){
       e.preventDefault();
-      Ticket.download(e.target.user_id.value, e.target.format.value)
+      Ticket.download(e.target.user_id.value, e.target.report_format.value)
         .then(function(){
           m.route(Ticket.originalRoute || '/', null, true);
         }, function(err){
@@ -55,7 +55,7 @@ var TicketPage = require('../pages/TicketPage.js');
         m('.col-lg-6.col-md-6.col-sm-6.col-xs-12', [
           ctrl.error(),
           m("input.form-control[name='user_id'][autofocus][required][value='2'][type='hidden']"),
-          m("input.form-control[name='format'][autofocus][required][value='PDF'][type='hidden']"),
+          m("input.form-control[name='report_format'][autofocus][required][value='PDF'][type='hidden']"),
           m("button.btn.btn-success.btn-block[type='submit']", "Download PDF")
         ])
       )

@@ -16,13 +16,13 @@ var Ticket = module.exports = {
             data: { ticket: data }
         });
     },
-    download: function (data) {
+    download: function (user_id, report_format) {
         return m.request({
-            method: 'get',
-            url: '/report.pdf?user_id=2', config: function (xhr) {
+            method: 'POST',
+            url: '/download_report', config: function (xhr) {
                 xhr.setRequestHeader('Authorization', Auth.token());
             },
-            
+            data: {user_id:user_id, report_format:report_format},
         });
     },
     get: function (id) {
