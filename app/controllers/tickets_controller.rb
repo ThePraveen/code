@@ -10,11 +10,18 @@ class TicketsController < ApplicationController
 
   # GET /report?user_id=5&format=PDF
   # GET /report?user_id=5
+  # GET /report?user_id=5&format=json&start_date=01-09-2017&end_date=01-11-2017
   def report
     # spacial authorization for downloading files which cannot be done with request headers
     agent = Agent.find(params[:user_id])
     if agent
-      tickets = agent.last_month_closed_tickets
+      tickets = if params[:start_date].present?
+        end_date = params[:end_date].present? ? params[:end_date] : DateTime.now
+        start_date = params[:start_date]
+        agent.closed_tickets(DateTime.parse(start_date), end_date)
+      else
+        agent.last_month_closed_tickets
+      end
       pdf = ReportPdf.new tickets
       if params[:format] == "PDF"
         send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
