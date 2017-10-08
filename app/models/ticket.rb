@@ -1,14 +1,19 @@
 class Ticket < ApplicationRecord
 
-  scope :last_month_closed_tickets, -> { where(status: :closed).where(:updated_at => [DateTime.now.beginning_of_day.last_month.beginning_of_month..DateTime.now.beginning_of_day.last_month.end_of_month]) }
+  scope :last_closed, -> { where(status: :closed).where(' done_date > :date', date: 1.month.ago) }
 
   scope :closed_tickets, -> (start_date, end_date){ where(status: :closed).where(:updated_at => [start_date..end_date]) }
 
-  has_many :comments, class_name: 'Comment'
+  scope :last_month_closed_tickets, -> { where(status: :closed).where(:updated_at => [DateTime.now.beginning_of_day.last_month.beginning_of_month..DateTime.now.beginning_of_day.last_month.end_of_month]) }
 
-  belongs_to :agent, class_name: 'Agent', foreign_key: 'agent_id', optional: true
+  # has_many :comments, class_name: 'Comment'
+  has_many :comments
 
-  belongs_to :customer, class_name: 'Customer', foreign_key: 'customer_id', optional: true
+  # belongs_to :agent, class_name: 'Agent', foreign_key: 'agent_id', optional: true
+  belongs_to :agent, optional: true
+
+  # belongs_to :customer, class_name: 'Customer', foreign_key: 'customer_id', optional: true
+  belongs_to :customer, optional: true
 
   enum status: [:added, :opened, :closed]
 
@@ -18,15 +23,12 @@ class Ticket < ApplicationRecord
 
   before_save :check_closure
 
-  belongs_to :department
+  belongs_to :department, optional: true
 
   def check_closure
-    if status_changed?
-      if status == "closed"
-        self.done_date = Time.now
-      else
-        done_date = nil
-      end
+    if status_changed? && status == "closed"
+      self.done_date = Time.now
     end
   end
+
 end

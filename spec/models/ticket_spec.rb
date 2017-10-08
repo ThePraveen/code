@@ -39,16 +39,14 @@ RSpec.describe Ticket, type: :model do
     Ticket.destroy_all
   end
 
-  it "should raise error, when user is created with invalid values" do
+  it "should raise error, when ticket is created with invalid values" do
     expect {
       Ticket.create!(invalid_ticket_attributes_without_title_and_dept)
-    }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Title can't be blank, Department must exist")
+    }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Title can't be blank")
   end
 
-  it "should raise error, when user is created with invalid values" do
-    expect {
-      Ticket.create!(invalid_ticket_attributes_without_dept)
-    }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Department must exist")
+  it "should not raise error, when ticket is created without department" do
+    Ticket.create!(invalid_ticket_attributes_without_dept)
   end
 
   it "should be able to create ticket with type Ticket" do

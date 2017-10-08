@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 20171008120307) do
     t.string   "password_digest"
     t.string   "type"
     t.string   "phone"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "name"
-    t.string   "status"
+    t.string   "status",          default: "active"
   end
 
 end

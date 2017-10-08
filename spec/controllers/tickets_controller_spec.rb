@@ -11,24 +11,30 @@ RSpec.describe TicketsController, type: :controller do
   end
 
   describe 'show one or more ticket' do
+
     before(:all) do
       @customer = Customer.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
       @agent1 = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
       @agent2 = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
       @admin = Admin.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
+
       @ticket1 = Faker::Hipster.sentence
       @customer.tickets.build(title: @ticket1,body:Faker::Lorem.sentence(3, true, 10)).save
+
       @ticket2 = Faker::Hipster.sentence
       @agent1.tickets.build(title: @ticket2,body:Faker::Lorem.sentence(3, true, 10)).save
+
       @ticket3 = Faker::Hipster.sentence
       @agent2.tickets.build(title: @ticket3,body:Faker::Lorem.sentence(3, true, 10)).save
     end
+
     after(:all) do
       Ticket.destroy_all
       User.destroy_all
     end
+
     describe 'GET #index' do
-      describe 'list of tickets according to privilleges ' ,active: true do
+      describe 'list of tickets according to privileges ' ,active: true do
         it 'should return tickets of customer' do
           request.headers[:Authorization] = @customer.token
           get :index
@@ -122,16 +128,18 @@ RSpec.describe TicketsController, type: :controller do
     end
 
     describe 'PUT #update' do
+
       context 'with valid params' do
+
         let(:new_attributes) do
           { status: :closed }
         end
 
         it 'updates the requested ticket and check done date' do
           request.headers[:Authorization] = @customer.token
-
           agent = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
           request.headers[:Authorization] = agent.token
+
           ticket = Ticket.create! valid_attributes.merge(agent_id: agent.id)
           put :update, params: { id: ticket.to_param, ticket: new_attributes }
           ticket.reload
