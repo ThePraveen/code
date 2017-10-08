@@ -39,9 +39,9 @@ var UserEdit = module.exports = {
           ]),
           m('.form-group.pull-left', [
             m("label.[for='inputStatus']", "Status"),
-            m("input[name='status'][autofocus][id='inputStatusBlock'][value='block'][type='radio']"),
+            m("input[name='status'][autofocus][id='inputStatusBlock'][value='blocked'][type='radio']"),
             m("label.radio-inline", "Block"),
-            m("input.ml-20[name='status'][autofocus][id='inputStatusUnblock'][value='unblock'][type='radio']"),
+            m("input.ml-20[name='status'][autofocus][id='inputStatusUnblock'][value='unblocked'][type='radio']"),
             m("label.radio-inline", "Unblock"),
           ]),
           m('.form-group',
@@ -49,6 +49,7 @@ var UserEdit = module.exports = {
           )
         ])
       ),
+      m("a.btn.btn-warning.btn-xs.pull-right[href='/users/" + m.route.param().id + "'][data-method='delete']", {config: m.route}, "Delete User")
     ])];
   }
 };
