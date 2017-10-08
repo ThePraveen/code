@@ -2080,10 +2080,12 @@ legend {
 	border-bottom:1px solid #e5e5e5
 }
 label {
-	display:inline-block;
+	display:block;
 	max-width:100%;
 	margin-bottom:5px;
-	font-weight:bold
+	font-weight:bold;
+	text-align: left;
+	font-size: 16px;
 }
 input[type="search"] {
 	-webkit-box-sizing:border-box;
@@ -4235,3 +4237,10 @@ body {
 		color:#fff
 	}
 }
+
+.mr-20{
+	margin-right: 20px !important;
+}
+
+.ml-20{
+	margin-left: 20px !important;

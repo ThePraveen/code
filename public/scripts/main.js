@@ -16,6 +16,7 @@ m.route(document.body, "/", {
   "/ticketEdit": require('./pages/TicketEdit.js'),
   "/verify/:code": require('./pages/Verify.js'),
   "/ticket": require('./pages/TicketPage.js'),
+  "/userEdit": require('./pages/UserEdit.js'),
   "/tickets": require('./pages/Tickets.js'),
   "/reports": require('./pages/Report.js'),
   "/users": require('./pages/Users.js'),

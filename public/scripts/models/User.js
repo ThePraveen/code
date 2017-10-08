@@ -1,4 +1,4 @@
-// Ticket model
+// User model
 var Auth = require('../models/Auth.js');
 var User = module.exports = {
 
@@ -7,15 +7,47 @@ var User = module.exports = {
     //      updated_at: datetime }
 
     all: function (id) {
-        return m.request({
-            method: 'get',
-            url: '/users',
-            config: function (xhr) {
-        xhr.setRequestHeader('Authorization', Auth.token());
+      return m.request({
+          method: 'get',
+          url: '/users',
+          config: function (xhr) {
+      xhr.setRequestHeader('Authorization', Auth.token());
+    },
+      });
     },
 
+    get: function (id) {
+        return m.request({
+            method: 'get',
+            url: '/users/'+id,
+            config: function (xhr) {
+        xhr.setRequestHeader('Authorization', Auth.token());
+    }
+
+        });
+    },
+
+    send: function (data,id) {
+        return m.request({
+            method: id ? 'PUT' : 'POST',
+            url: '/users'+(id?'/'+id : '') 
+            , config: function (xhr) {
+                xhr.setRequestHeader('Authorization', Auth.token());
+            },
+            data: { user: data }
+        });
+    },
+
+    delete: function (id) {
+        return m.request({
+            method: 'DELETE',
+            url: '/users'+(id?'/'+id : '') 
+            , config: function (xhr) {
+                xhr.setRequestHeader('Authorization', Auth.token());
+            },
+            data: { id: id }
         });
     },
 };
 
-module.exports = Ticket;
+module.exports = User;

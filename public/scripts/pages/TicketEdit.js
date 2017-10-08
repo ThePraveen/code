@@ -13,7 +13,7 @@ var TicketEdit = module.exports = {
 
       Ticket.send({title: e.target.title.value,body: e.target.body.value})
         .then(function(){
-          ctrl.error(m(".alert.alert-success.animated.fadeInUp", 'ticket have been saved'));
+          ctrl.error(m(".alert.alert-success.animated.fadeInUp", 'ticket has been saved'));
         }, function(err){
           var message = 'An error occurred.';
           
