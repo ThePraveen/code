@@ -3,13 +3,7 @@
   "private":true,
   "version": "0.0.1",
   "dependencies": {
-<<<<<<< HEAD
-    "jquery": "2.1.4"
-  }
-}
-=======
     "jquery": "2.1.4",
     "mithril": "0.2.2-rc.1"
   }
 }
->>>>>>> e84c732f3fa85e9758b639a632b26eeebf815482
