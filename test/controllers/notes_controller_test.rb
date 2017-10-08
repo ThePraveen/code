@@ -24,7 +24,12 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update note" do
-    patch note_url(@note), params: { note: { body: @note.body, ticket: @note.ticket, user: @note.user } }, as: :json
+    patch note_url(@note), params: { note:
+                                       { body: @note.body,
+                                         ticket: @note.ticket,
+                                         user: @note.user
+                                       }
+                                   }, as: :json
     assert_response 200
   end
 

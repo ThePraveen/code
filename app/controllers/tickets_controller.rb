@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :update, :destroy]
-  skip_before_action :authenticate_request, only: [:report]
+
   # GET /tickets
   def index
     @tickets = @current_user.allowed_tickets
@@ -8,17 +8,21 @@ class TicketsController < ApplicationController
     render json: @tickets
   end
 
+  # GET /report?user_id=5&format=PDF
+  # GET /report?user_id=5
   def report
     # spacial authorization for downloading files which cannot be done with request headers
-    @current_user = AuthorizeApiRequest.call('Authorization' => params[:token]).result if params[:token]
-    if @current_user
-      tickets = @current_user.allowed_tickets.last_closed
+    agent = Agent.find(params[:user_id])
+    if agent
+      tickets = agent.last_month_closed_tickets
       pdf = ReportPdf.new tickets
-      send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
-
+      if params[:format] == "PDF"
+        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      else
+        render json: tickets
+      end
     else
-
-      render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+      render json: { error: 'Agent not found' }, status: 404
     end
   end
 

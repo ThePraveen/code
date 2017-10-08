@@ -3,17 +3,17 @@
 one:
   title: MyText
   status: 1
-  agent: 
-  customer: 
-  department: 
+  agent:
+  customer:
+  department:
   priorety: 1
   done_date: 2016-10-13 13:32:28
 
 two:
   title: MyText
   status: 1
-  agent: 
-  customer: 
-  department: 
+  agent:
+  customer:
+  department:
   priorety: 1
   done_date: 2016-10-13 13:32:28
