@@ -23,7 +23,7 @@ class TicketsController < ApplicationController
         agent.last_month_closed_tickets
       end
       pdf = ReportPdf.new tickets
-      if params[:format] == "PDF"
+      if params[:format] == "pdf"
         send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
       else
         render json: tickets
