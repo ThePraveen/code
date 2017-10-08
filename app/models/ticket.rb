@@ -10,10 +10,10 @@ class Ticket < ApplicationRecord
   has_many :comments
 
   # belongs_to :agent, class_name: 'Agent', foreign_key: 'agent_id', optional: true
-  belongs_to :agent
+  belongs_to :agent, optional: true
 
   # belongs_to :customer, class_name: 'Customer', foreign_key: 'customer_id', optional: true
-  belongs_to :customer
+  belongs_to :customer, optional: true
 
   enum status: [:added, :opened, :closed]
 
@@ -23,11 +23,12 @@ class Ticket < ApplicationRecord
 
   before_save :check_closure
 
-  belongs_to :department
+  belongs_to :department, optional: true
 
   def check_closure
     if status_changed? && status == "closed"
-      self.update!(:done_date => Time.now)
+      self.done_date = Time.now
     end
   end
+
 end

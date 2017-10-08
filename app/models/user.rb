@@ -2,6 +2,10 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  USER_ROLES = %W(Admin Customer Agent)
+
+  WHITELISTED_STATUS = %W(active blocked unblocked)
+
   # validates :name, :password, :email, presence: true
   # validate_presence_of would have been better
   validates_presence_of :name, :password, :email, :type, :status
@@ -11,11 +15,11 @@ class User < ApplicationRecord
   validates_format_of :email,
                       :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       :on => :create,
-                      :message => "Invalid email"
+                      :message => "Invalid format"
 
-  USER_ROLES = %W(Admin Customer Agent)
 
   validates_inclusion_of :type, :in => USER_ROLES
+  validates_inclusion_of :status, :in => WHITELISTED_STATUS
 
   def allowed_tickets
     raise NotImplementedError, 'must be implemented'
@@ -29,6 +33,12 @@ class User < ApplicationRecord
   USER_ROLES.each do |role|
     define_method(role+"?") {
       self.type == role
+    }
+  end
+
+  WHITELISTED_STATUS.each do |status|
+    define_method(status+"?") {
+      self.status == status
     }
   end
 
