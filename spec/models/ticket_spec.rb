@@ -42,13 +42,7 @@ RSpec.describe Ticket, type: :model do
   it "should raise error, when user is created with invalid values" do
     expect {
       Ticket.create!(invalid_ticket_attributes_without_title_and_dept)
-    }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Title can't be blank, Department must exist")
-  end
-
-  it "should raise error, when user is created with invalid values" do
-    expect {
-      Ticket.create!(invalid_ticket_attributes_without_dept)
-    }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Department must exist")
+    }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Title can't be blank")
   end
 
   it "should be able to create ticket with type Ticket" do
@@ -71,10 +65,24 @@ RSpec.describe Ticket, type: :model do
    end
 
 
-  it "should be able to change the status" do
+  it "should be able to change the status to opened" do
     ticket = Ticket.create!(valid_ticket_attributes)
     ticket.update(status: 'opened')
 
     expect(ticket.status).to eq('opened')
   end
+
+  it "should be able to change the status to closed" do
+    ticket = Ticket.create!(valid_ticket_attributes)
+    ticket.update(status: 'closed')
+
+    expect(ticket.status).to eq('closed')
+  end
+
+   it "should be able to change the status to nil" do
+   	expect {
+    	ticket = Ticket.create!(valid_ticket_attributes)
+    	ticket.update(status: 'nil')
+    }.to raise_error(ArgumentError, "'nil' is not a valid status")
+  end 
 end
