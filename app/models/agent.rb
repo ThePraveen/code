@@ -12,10 +12,10 @@ class Agent < User
   end
 
   def last_month_closed_tickets
-	self.tickets.last_month_closed_tickets
+	  self.tickets.last_month_closed_tickets
   end
 
   def closed_tickets start_date, end_date
-	self.tickets.closed_tickets start_date, end_date
+	  self.tickets.closed_tickets start_date, end_date
   end
 end
