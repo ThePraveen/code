@@ -23,7 +23,7 @@ class TicketsController < ApplicationController
                   agent.last_month_closed_tickets
                 end
 
-      render json: tickets
+      render json: {tickets: tickets, report_path: agent.generate_report(tickets)}
     else
       render json: { error: 'Agent not found' }, status: 404
     end
