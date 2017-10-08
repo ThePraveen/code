@@ -1,5 +1,8 @@
 class Ticket < ApplicationRecord
   scope :last_month_closed_tickets, -> { where(status: :closed).where(:updated_at => [DateTime.now.beginning_of_day.last_month.beginning_of_month..DateTime.now.beginning_of_day.last_month.end_of_month]) }
+
+  scope :closed_tickets, -> (start_date, end_date){ where(status: :closed).where(:updated_at => [start_date..end_date]) }
+
   has_many :comments, class_name: 'Comment'
 
   belongs_to :agent, class_name: 'Agent', foreign_key: 'agent_id', optional: true
