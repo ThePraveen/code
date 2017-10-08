@@ -6,11 +6,22 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    if @current_user.type == 'Admin'
-      @users = User.all
+    if @current_user.Admin?
+      conditions = {}
+      conditions[:status] = params[:status] if params[:status].present?
+      conditions[:type] = params[:type] if params[:status].present?
+      sort_column = params[:sort_column].presence || "id"
+      order_by = params[:sort_order].presence || 'desc'
+      page = (params[:page].presence || 0).to_i
+      limit = (params[:limit].presence || 10).to_i
+      @users = User.where(conditions).order(sort_column + ' ' + order_by).offset(page*limit).limit(limit)
       render json: @users
     else
-      render json: [@current_user]
+      render json: {
+        status: 'error',
+        errors: ["Unauthorized access"],
+        message: "You are not authorized access this data"
+      }, status: 403
     end
   end
 
@@ -56,15 +67,6 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  # def download_last_month_report
-  #   agent = Agent.where(email: @user.email).first
-  #   report_pdf = ReportPdf.new(agent.last_month_closed_tickets)
-  #
-  #   send_data report_pdf.render,
-  #             filename: "#{agent.email}.pdf",
-  #             type: "application/pdf"
-  # end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -75,5 +77,9 @@ class UsersController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def user_params
     params.require(:user).permit(:email, :password, :name, :type, :phone, :status)
+  end
+
+  def user_filter_params
+    params.require(:user).permit(:email, :name, :type, :phone, :status)
   end
 end

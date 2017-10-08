@@ -11,8 +11,8 @@ var User = module.exports = {
           method: 'get',
           url: '/users',
           config: function (xhr) {
-      xhr.setRequestHeader('Authorization', Auth.token());
-    },
+            xhr.setRequestHeader('Authorization', Auth.token());
+            },
       });
     },
 
@@ -30,7 +30,7 @@ var User = module.exports = {
     send: function (data,id) {
         return m.request({
             method: id ? 'PUT' : 'POST',
-            url: '/users'+(id?'/'+id : '') 
+            url: '/users'+(id?'/'+id : '')
             , config: function (xhr) {
                 xhr.setRequestHeader('Authorization', Auth.token());
             },
@@ -41,7 +41,7 @@ var User = module.exports = {
     delete: function (id) {
         return m.request({
             method: 'DELETE',
-            url: '/users'+(id?'/'+id : '') 
+            url: '/users'+(id?'/'+id : '')
             , config: function (xhr) {
                 xhr.setRequestHeader('Authorization', Auth.token());
             },

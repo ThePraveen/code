@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 20171008120307) do
 
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "title",         limit: 65535
-    t.integer  "status"
+    t.integer  "status",                      default: 0
     t.integer  "agent_id"
     t.integer  "customer_id"
     t.integer  "department_id"
-    t.integer  "priorety"
+    t.integer  "priority",                    default: 0
     t.datetime "done_date"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.text     "body",          limit: 65535
     t.index ["agent_id"], name: "index_tickets_on_agent_id", using: :btree
     t.index ["customer_id"], name: "index_tickets_on_customer_id", using: :btree

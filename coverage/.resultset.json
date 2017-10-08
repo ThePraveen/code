@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/controllers/authentication_controller_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/controllers/authentication_controller_spec.rb": [
         1,
         null,
         1,
@@ -25,7 +25,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/rails_helper.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -84,14 +84,14 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/environment.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/application.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/application.rb": [
         1,
         null,
         1,
@@ -124,12 +124,12 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/boot.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/environments/test.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/environments/test.rb": [
         1,
         null,
         null,
@@ -173,7 +173,13 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/application_controller_renderer.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/amazon_ses.rb": [
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/application_controller_renderer.rb": [
         null,
         null,
         null,
@@ -181,25 +187,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/backtrace_silencers.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/cors.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -208,13 +196,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/filter_parameter_logging.rb": [
-        null,
-        null,
-        null,
-        1
-      ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/inflections.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/cors.rb": [
         null,
         null,
         null,
@@ -232,14 +214,38 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/mime_types.rb": [
-        null,
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/new_framework_defaults.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/mime_types.rb": [
+        null,
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/new_framework_defaults.rb": [
         null,
         null,
         null,
@@ -259,7 +265,7 @@
         null,
         1
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/initializers/wrap_parameters.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -275,7 +281,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/config/routes.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/config/routes.rb": [
         1,
         null,
         1,
@@ -293,7 +299,7 @@
         1,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/support/request_helpers.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/support/request_helpers.rb": [
         1,
         1,
         1,
@@ -302,7 +308,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/support/token_helper.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/support/token_helper.rb": [
         1,
         null,
         null,
@@ -314,7 +320,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/controllers/tickets_controller.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/controllers/tickets_controller.rb": [
         1,
         null,
         1,
@@ -436,7 +442,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/controllers/application_controller.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -460,7 +466,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/controllers/tickets_controller_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/controllers/tickets_controller_spec.rb": [
         1,
         null,
         1,
@@ -613,7 +619,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/controllers/users_controller_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/controllers/users_controller_spec.rb": [
         1,
         null,
         null,
@@ -678,7 +684,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/controllers/users_controller.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/controllers/users_controller.rb": [
         1,
         null,
         1,
@@ -759,7 +765,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/models/admin_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/models/admin_spec.rb": [
         1,
         null,
         1,
@@ -806,7 +812,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/admin.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/admin.rb": [
         1,
         null,
         1,
@@ -819,7 +825,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/user.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/user.rb": [
         1,
         null,
         1,
@@ -870,12 +876,12 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/application_record.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/models/agent_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/models/agent_spec.rb": [
         1,
         null,
         1,
@@ -911,7 +917,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/agent.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/agent.rb": [
         1,
         null,
         1,
@@ -932,55 +938,60 @@
         1,
         0,
         null,
-        null
-      ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/models/customer_spec.rb": [
-        1,
         null,
         1,
+        0,
         null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/customer.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/models/customer_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/customer.rb": [
         1,
         null,
         null,
@@ -995,7 +1006,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/models/ticket_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/models/ticket_spec.rb": [
         1,
         null,
         1,
@@ -1089,7 +1100,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/ticket.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/ticket.rb": [
         1,
         null,
         1,
@@ -1125,7 +1136,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/models/user_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/models/user_spec.rb": [
         1,
         null,
         1,
@@ -1239,7 +1250,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/requests/tickets_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/requests/tickets_spec.rb": [
         1,
         null,
         1,
@@ -1267,7 +1278,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/routing/tickets_routing_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/routing/tickets_routing_spec.rb": [
         1,
         null,
         1,
@@ -1302,7 +1313,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/spec/routing/users_routing_spec.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/spec/routing/users_routing_spec.rb": [
         1,
         null,
         1,
@@ -1338,7 +1349,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/commands/authenticate_user.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/commands/authenticate_user.rb": [
         1,
         1,
         null,
@@ -1363,7 +1374,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/lib/json_web_token.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/lib/json_web_token.rb": [
         null,
         1,
         1,
@@ -1381,7 +1392,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/commands/authorize_api_request.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/commands/authorize_api_request.rb": [
         1,
         1,
         null,
@@ -1417,7 +1428,7 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/comment.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/comment.rb": [
         1,
         null,
         1,
@@ -1425,11 +1436,11 @@
         null,
         null
       ],
-      "/home/niteshkumar/Playground/rails/crossover/Code/app/models/department.rb": [
+      "/Users/praveensah/Downloads/Tickets - Crossover Ruby Trial/Code/app/models/department.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1507494474
+    "timestamp": 1507495209
   }
 }
