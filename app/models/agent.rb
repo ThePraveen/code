@@ -18,4 +18,9 @@ class Agent < User
   def closed_tickets start_date, end_date
 	  self.tickets.closed_tickets start_date, end_date
   end
+
+  def send_report(url)
+    UserMailer.send_monthly_report(self, url)
+  end
+
 end
