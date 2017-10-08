@@ -20,3 +20,4 @@ dist/
 .idea/inspectionProfiles/
 vendor/
 .idea/
+.idea/workspace.xml
