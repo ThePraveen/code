@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     agent = Agent.where(email: @user.email).first
     report_pdf = ReportPdf.new(agent.last_month_closed_tickets)
 
-    send_data report_pdf.table_content,
+    send_data report_pdf.render,
               filename: "#{agent.email}.pdf",
               type: "application/pdf"
   end

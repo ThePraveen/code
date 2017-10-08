@@ -9,7 +9,6 @@ class Agent < User
   end
 
   def last_month_closed_tickets
-  	last_month=DateTime.now.beginning_of_day.last_month
-  	self.tickets.where(:updated_at => [last_month.beginning_of_month..last_month.end_of_month])
+  	self.tickets.last_month_closed_tickets
   end
 end
