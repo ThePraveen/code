@@ -24,6 +24,7 @@ gem 'puma', '~> 3.0'
  gem 'simple_command'
  gem 'prawn'
  gem 'prawn-table'
+ gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
