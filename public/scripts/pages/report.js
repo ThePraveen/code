@@ -17,8 +17,8 @@ var Reports = module.exports = {
       // Columns definition:
       [
         { key: "title",label: "Title", sortable: true },
-        { key: "agent_id",label: "Creation Date", sortable: true },
-        { key: "customer_id",label: "Customer", sortable: true },
+        { key: "created_at",label: "Creation Date", sortable: true },
+        { key: "done_date",label: "Done Date", sortable: true },
         { key: "priorety",label: "Priority"},
         { key: "status",label: "Status", sortable: true },
       ],
@@ -29,20 +29,17 @@ var Reports = module.exports = {
         authorization: Auth.token(),
         // Handler of click event on data cell
         // It receives the relevant information already resolved
-        onCellClick: function (content, row, col) {
-          console.log(content, row, col);
-          m.route("/ticket",{id:row.id})
-        }
       }
     );
   },
 
   view: function (ctrl) {
     return [Navbar, m('.container', [
-      m('h1', 'Crossover Ticket System'),
+      m('h1', 'Report: Crossover Ticket System'),
       mc.Datatable.view(ctrl.datatable, {
-        caption: 'My Tickets'
-      })
+        caption: 'Tickets'
+      }),
+      m("a.btn.btn-success.pull-right[href='/reports']", {config: m.route}, "Download PDF")
     ])];
   }
 };

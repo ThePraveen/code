@@ -42,7 +42,8 @@ var Tickets = module.exports = {
       m('h1', 'Crossover Ticket System'),
       mc.Datatable.view(ctrl.datatable, {
         caption: 'My Tickets'
-      })
+      }),
+      m("a.btn.btn-primary.pull-right[href='/reports']", {config: m.route}, "Get Report")
     ])];
   }
 };
