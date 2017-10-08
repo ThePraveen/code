@@ -14,9 +14,10 @@ class TicketsController < ApplicationController
     # spacial authorization for downloading files which cannot be done with request headers
     agent = Agent.find(params[:user_id])
     if agent
-      tickets = agent.last_month_closed_tickets
+      # tickets = agent.last_month_closed_tickets
+      tickets = agent.allowed_tickets
       pdf = ReportPdf.new tickets
-      if params[:format] == "PDF"
+      if params[:format] == "pdf"
         send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
       else
         render json: tickets

@@ -19,7 +19,7 @@ var Ticket = module.exports = {
     download: function (data) {
         return m.request({
             method: 'get',
-            url: '/report.pdf', config: function (xhr) {
+            url: '/report.pdf?user_id=2', config: function (xhr) {
                 xhr.setRequestHeader('Authorization', Auth.token());
             },
             
