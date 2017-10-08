@@ -2,12 +2,12 @@
 
 one:
   email: MyString
-  password: MyString
-  type: 
+#  password: MyString
+  type:
   phone: MyString
 
 two:
   email: MyString
-  password: MyString
-  type: 
+#  password: MyString
+  type:
   phone: MyString

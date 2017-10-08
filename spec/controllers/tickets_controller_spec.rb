@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe TicketsController, type: :controller do
 
   let(:valid_attributes) do
@@ -106,7 +105,7 @@ RSpec.describe TicketsController, type: :controller do
           request.headers[:Authorization] = @customer.token
             post :create, params: { ticket: valid_attributes }
           expect(response.status).to be(201)
-          
+
           body = JSON.parse(response.body)
           expect(body['customer_id']).to eq(@customer.id)
         end
@@ -115,7 +114,7 @@ RSpec.describe TicketsController, type: :controller do
       context 'with invalid params' do
         it 'assigns a newly created but unsaved ticket as @ticket' do
           request.headers[:Authorization] = @customer.token
-          
+
           post :create, params: { ticket: invalid_attributes }
           expect(response.status).to eq(422)
         end
@@ -130,7 +129,7 @@ RSpec.describe TicketsController, type: :controller do
 
         it 'updates the requested ticket and check done date' do
           request.headers[:Authorization] = @customer.token
-          
+
           agent = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
           request.headers[:Authorization] = agent.token
           ticket = Ticket.create! valid_attributes.merge(agent_id: agent.id)
