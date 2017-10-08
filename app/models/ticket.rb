@@ -7,15 +7,29 @@ class Ticket < ApplicationRecord
   enum priorety: [:low, :medium, :high]
   validates :title, :body, presence: true
   before_save :check_closure
+<<<<<<< HEAD
   def check_closure
+=======
+
+  def check_closure
+    # TODO improve indentation
+>>>>>>> e84c732f3fa85e9758b639a632b26eeebf815482
     if status_changed?
 
     if status == "closed"
     self.done_date = Time.now
+<<<<<<< HEAD
     else 
     done_date = nil
     end
       
     end 
+=======
+    else
+    done_date = nil
+    end
+
+    end
+>>>>>>> e84c732f3fa85e9758b639a632b26eeebf815482
   end
 end
