@@ -8,8 +8,7 @@ class User < ApplicationRecord
 
   # validates :name, :password, :email, presence: true
   # validate_presence_of would have been better
-  validates_presence_of :name, :password, :email, :type, :status
-
+  validates_presence_of :name, :email, :type
   validates_uniqueness_of :email
 
   validates_format_of :email,

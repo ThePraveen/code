@@ -20,12 +20,17 @@ var users = module.exports = {
         { key: "email",label: "Email" },
         { key: "phone",label: "Phone" },
         { key: "type",label: "Type" },
+        { key: "status",label: "Status" },
       ],
       // Other configuration:
       {
         // Address of the webserver supplying the data
         url: 'users',
         authorization: Auth.token(),
+        onCellClick: function (content, row, col) {
+          console.log(content, row, col);
+          m.route("/userEdit",{id:row.id})
+        }
         // Handler of click event on data cell
         // It receives the relevant information already resolved
       }
