@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :tickets
   resources :departments
   resources :users
+
+  get 'users/:id/download_last_month_report'=>'users#download_last_month_report'
   get 'users/me'=>'users#me'
   get 'report'=>'tickets#report'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

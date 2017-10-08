@@ -11,11 +11,11 @@ class Ticket < ApplicationRecord
   def check_closure
     # TODO improve indentation
     if status_changed?
-
-    if status == "closed"
-      self.done_date = Time.now
-    else 
-      done_date = nil
+      if status == "closed"
+        self.done_date = Time.now
+      else
+        done_date = nil
+      end
     end
   end
 end
