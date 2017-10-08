@@ -22,3 +22,4 @@ vendor/
 .idea/
 .idea/workspace.xml
 /public/scripts/main.js
+coverage/
