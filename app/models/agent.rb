@@ -1,5 +1,7 @@
 class Agent < User
+
   has_many :tickets, class_name: "Ticket", foreign_key: "agent_id"
+
   def allowed_tickets
     Ticket.where('agent_id=:id or agent_id is null or customer_id=:id ', id: id)
   end
