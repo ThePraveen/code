@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    if @current_user.Admin?
+    if @current_user.type == 'Admin'
       @users = User.all
       render json: @users
     else
