@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :update, :destroy, :download_last_month_report]
+
   skip_before_action :authenticate_request, only: [:create]
 
   # GET /users
@@ -54,14 +56,14 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  def download_last_month_report
-    agent = Agent.where(email: @user.email).first
-    report_pdf = ReportPdf.new(agent.last_month_closed_tickets)
-
-    send_data report_pdf.render,
-              filename: "#{agent.email}.pdf",
-              type: "application/pdf"
-  end
+  # def download_last_month_report
+  #   agent = Agent.where(email: @user.email).first
+  #   report_pdf = ReportPdf.new(agent.last_month_closed_tickets)
+  #
+  #   send_data report_pdf.render,
+  #             filename: "#{agent.email}.pdf",
+  #             type: "application/pdf"
+  # end
 
   private
 
@@ -72,6 +74,6 @@ class UsersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.require(:user).permit(:email, :password, :name, :type, :phone)
+    params.require(:user).permit(:email, :password, :name, :type, :phone, :status)
   end
 end
