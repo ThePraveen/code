@@ -1,0 +1,9 @@
+{
+  "name": "client",
+  "private":true,
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "mithril": "0.2.2-rc.1"
+  }
+}
