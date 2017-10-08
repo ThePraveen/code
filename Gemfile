@@ -29,6 +29,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'test-unit'
+  gem 'simplecov'
 end
 group :test do
 

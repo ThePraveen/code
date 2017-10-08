@@ -1,5 +1,10 @@
 class User < ApplicationRecord
 
+  def as_json(options = {})
+    super(options.merge({ except: [:password_digest] }))
+  end
+
+
   has_secure_password
 
   USER_ROLES = %W(Admin Customer Agent)
