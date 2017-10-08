@@ -22,9 +22,26 @@ class TicketsController < ApplicationController
                 else
                   agent.last_month_closed_tickets
                 end
+      render json: tickets
+    else
+      render json: { error: 'Agent not found' }, status: 404
+    end
+  end
+
+  def download_report
+    # spacial authorization for downloading files which cannot be done with request headers
+    agent = Agent.find(params[:user_id])
+    if agent
+      tickets = if params[:start_date].present?
+        end_date = params[:end_date].present? ? params[:end_date] : DateTime.now
+        start_date = params[:start_date]
+        agent.closed_tickets(DateTime.parse(start_date), end_date)
+      else
+        agent.last_month_closed_tickets
+      end
       pdf = ReportPdf.new tickets
-      if params[:format] == "pdf"
-        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      if params[:report_format] == "PDF"
+        send_data pdf.render, filename: 'report.pdf', type: 'application/json', disposition: "inline"
       else
         render json: tickets
       end

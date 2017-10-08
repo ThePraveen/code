@@ -1,0 +1,18 @@
+sudo: false
+
+# Only care about running tests against latest node
+language: node_js
+node_js:
+- "6"
+
+# Keep node_modules around, it speeds up builds & they don't change often
+cache:
+  directories:
+  - node_modules
+
+# Bundle before running tests so the bundle is always up-to-date
+before_script: npm run build
+
+# Run tests
+script:
+- npm test

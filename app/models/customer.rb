@@ -3,8 +3,8 @@ class Customer < User
   # has_many :tickets, class_name: 'Ticket', foreign_key: 'customer_id'
   has_many :tickets
 
-  def allowed_tickets
-    tickets.where('customer_id=:id ', id: id)
+  def allowed_tickets(filter={})
+    tickets.where('customer_id=:id ', id: id).where(filter)
   end
 
   def ticket(ticket_id)

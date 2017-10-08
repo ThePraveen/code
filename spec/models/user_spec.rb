@@ -17,6 +17,7 @@ RSpec.describe User, type: :model do
 
   before :all do
     Rails.logger.info("Starting user_spec tests")
+    @user  = User.new()
   end
 
   after(:all) do
@@ -35,10 +36,17 @@ RSpec.describe User, type: :model do
     }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Type can't be blank, Type is not included in the list")
   end
 
-  it "should be able to create customer with type Customer" do
-    customer = Customer.create!(attribute_without_type)
-    expect(customer.type).to eq("Customer")
-    expect(customer.type).to eq("Customer")
-  end
+  # it "should not allow empty password" do
+  #   expect {
+  #     User.create!(    {
+  #                        name: Faker::Name.name,
+  #                        email: Faker::Internet.email,
+  #                        type: "Customer"
+  #                      }
+  #     )
+  #     # ).to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Type can't be blank, Type is not included in the list")
+  #   }
+  # end
+
 
 end
