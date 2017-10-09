@@ -152,18 +152,17 @@ RSpec.describe TicketsController, type: :controller do
       context 'with valid params' do
         it 'gets the list of closed tickets in the range' do
           agent = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
-            
+
           ticket1 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket1,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           ticket2 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
- 
+
           request.headers[:Authorization] = agent.token
-          get :report, params: { user_id: agent.id,
-                                 start_date: (Date.today-2.days).strftime('%d-%m-%Y'),
-                                 end_date: Date.today.strftime('%d-%m-%Y')
-                               }
+          byebug
+
+          get :view_report, params: {}
           expect(response.status).to be(200)
 
           body = JSON.parse(response.body)
@@ -173,13 +172,13 @@ RSpec.describe TicketsController, type: :controller do
 
         it 'gets the list of closed tickets with only start_date' do
           agent = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
-            
+
           ticket1 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket1,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           ticket2 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
- 
+
           request.headers[:Authorization] = agent.token
           get :report, params: { user_id: agent.id,
                                  start_date: (Date.today-2.days).strftime('%d-%m-%Y')
@@ -193,13 +192,13 @@ RSpec.describe TicketsController, type: :controller do
 
         it 'gets the list of closed tickets from last month' do
           agent = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
-            
+
           ticket1 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket1,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           ticket2 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
- 
+
           request.headers[:Authorization] = agent.token
           get :report, params: { user_id: agent.id
                                }
@@ -212,13 +211,13 @@ RSpec.describe TicketsController, type: :controller do
 
         it 'raised exception while getting the list of closed tickets from last month for an invalid agent' do
           agent = Agent.create(name:Faker::Superhero.name,email: Faker::Internet.email, password: Faker::Internet.password)
-            
+
           ticket1 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket1,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           ticket2 = Faker::Hipster.sentence
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
- 
+
           request.headers[:Authorization] = agent.token
           get :report, params: { user_id: (agent.id+5)
                                }
