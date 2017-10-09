@@ -4,6 +4,8 @@ var Auth = require('../models/Auth.js');
 var Ticket = require('../models/Ticket.js');
 var TicketPage = require('../pages/TicketPage.js');
 
+m.route.mode = "pathname";
+
 var Tickets = module.exports = {
   controller: function () {
     var ctrl = this;
