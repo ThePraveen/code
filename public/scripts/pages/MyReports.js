@@ -17,7 +17,6 @@ var Tickets = module.exports = {
       // Columns definition:
       [
         { key: "title",label: "Title", sortable: true },
-        { key: "agent_id",label: "Agent", sortable: true },
         { key: "customer_id",label: "Customer", sortable: true },
         { key: "priorety",label: "Priority"},
         { key: "status",label: "Status", sortable: true },
@@ -25,7 +24,7 @@ var Tickets = module.exports = {
       // Other configuration:
       {
         // Address of the webserver supplying the data
-        url: 'tickets',
+        url: 'reports',
         authorization: Auth.token(),
         // Handler of click event on data cell
         // It receives the relevant information already resolved
@@ -39,10 +38,11 @@ var Tickets = module.exports = {
 
   view: function (ctrl) {
     return [Navbar, m('.container', [
-      m('h1', 'Crossover Ticket System'),
+      m('h1', 'Last Month Report'),
       mc.Datatable.view(ctrl.datatable, {
-        caption: 'My Tickets'
+        caption: 'Tickets closed last month'
       }),
+      m("a.btn.btn-primary.pull-right[href='/report_1507516457.pdf']", {config: m.route}, "Export Report")
     ])];
   }
 };

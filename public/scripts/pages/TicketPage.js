@@ -3,6 +3,7 @@ var Ticket = require('../models/Ticket.js');
 var Navbar = require('../components/Navbar.js');
 
 var TicketPage = module.exports = {
+
   controller: function (args) {
     var ctrl = this;
     ctrl.error = m.prop('');
@@ -28,6 +29,7 @@ var TicketPage = module.exports = {
         ctrl.error(m(".alert.alert-danger.animated.fadeInUp", message));
       });
   },
+
   view: function (ctrl) {
     return [Navbar, m('.container', [[
       m("h2", "Ticket"),

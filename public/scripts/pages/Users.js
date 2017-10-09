@@ -10,7 +10,6 @@ var users = module.exports = {
 
     ctrl.prioretyFromate = function(value, row, col, attrs) {
       if (value == 'high') attrs.class = 'label label-danger';
-
       return value;
     }
 

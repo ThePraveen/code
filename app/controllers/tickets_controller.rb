@@ -8,46 +8,20 @@ class TicketsController < ApplicationController
     render json: @tickets
   end
 
-  # GET /report?user_id=5&format=PDF
-  # GET /report?user_id=5
-  # GET /report?user_id=5&format=json&start_date=01-09-2017&end_date=01-11-2017
-  def report
-    agent = Agent.find_by_id(params[:user_id])
-    if agent.present?
-      tickets = if params[:start_date].present?
-                  end_date = params[:end_date].present? ? DateTime.parse(params[:end_date]) : DateTime.now
-                  start_date = DateTime.parse(params[:start_date])
-                  agent.closed_tickets(start_date, end_date)
-                else
-                  agent.last_month_closed_tickets
-                end
-
-      render json: {tickets: tickets, report_path: agent.generate_report(tickets)}
-    else
-      render json: { error: 'Agent not found' }, status: 404
-    end
+  def view_report
+    start_date = params[:start_date].presence || DateTime.now.beginning_of_day.beginning_of_month
+    end_date = params[:end_date].presence || DateTime.now.beginning_of_day.end_of_month
+    @current_user.tickets_closed_between(start_date, end_date)
+    tickets = Ticket.closed_tickets(start_date, end_date).where(:agent_id => @current_user)
+    render json: tickets
   end
 
   def download_report
-    # spacial authorization for downloading files which cannot be done with request headers
-    agent = Agent.find(params[:user_id])
-    if agent
-      tickets = if params[:start_date].present?
-                  end_date = params[:end_date].present? ? params[:end_date] : DateTime.now
-                  start_date = params[:start_date]
-                  agent.closed_tickets(DateTime.parse(start_date), end_date)
-                else
-                  agent.last_month_closed_tickets
-                end
-      pdf = ReportPdf.new tickets
-      if params[:report_format] == "PDF"
-        send_data pdf.render, filename: 'report.pdf', type: 'application/json', disposition: "inline"
-      else
-        render json: tickets
-      end
-    else
-      render json: { error: 'Agent not found' }, status: 404
-    end
+    start_date = params[:start_date].presence || DateTime.now.beginning_of_day.beginning_of_month
+    end_date = params[:end_date].presence || DateTime.now.beginning_of_day.end_of_month
+    @current_user.tickets_closed_between(start_date, end_date)
+    tickets = Ticket.closed_tickets(start_date, end_date).where(:agent_id => @current_user)
+    render json: {report_file: ReportService.generate_report(tickets)}
   end
 
   # GET /tickets/1

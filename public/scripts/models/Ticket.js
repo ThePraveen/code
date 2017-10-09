@@ -9,30 +9,31 @@ var Ticket = module.exports = {
     send: function (data,id) {
         return m.request({
             method: id ? 'PUT' : 'POST',
-            url: '/tickets'+(id?'/'+id : '') 
+            url: '/tickets'+(id?'/'+id : '')
             , config: function (xhr) {
                 xhr.setRequestHeader('Authorization', Auth.token());
             },
             data: { ticket: data }
         });
     },
-    download: function (user_id, report_format) {
+
+    download: function () {
         return m.request({
-            method: 'POST',
-            url: '/download_report', config: function (xhr) {
+            method: 'get',
+            url: '/download_report',
+            config: function (xhr) {
                 xhr.setRequestHeader('Authorization', Auth.token());
-            },
-            data: {user_id:user_id, report_format:report_format},
+            }
         });
     },
+
     get: function (id) {
         return m.request({
             method: 'get',
             url: '/tickets/'+id,
             config: function (xhr) {
-        xhr.setRequestHeader('Authorization', Auth.token());
-    }
-
+              xhr.setRequestHeader('Authorization', Auth.token());
+             }
         });
     },
 };

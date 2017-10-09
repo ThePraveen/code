@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
+
   before_action :authenticate_request
+  after_action :log_response
   attr_reader :current_user
 
   private
@@ -9,6 +11,9 @@ class ApplicationController < ActionController::API
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 
+  def log_response
+    logger.debug "Response :- #{response.body}"
+  end
 
   rescue_from Exception do |e|
     logger.error("Time: #{Time.now}, Message: #{e.message}, Backtrace: #{e.backtrace.join("\n")}")

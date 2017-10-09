@@ -8,6 +8,8 @@ var Navbar = module.exports = {
     [
       { label: 'Tickets', href: '/tickets' },
       { label: 'New Ticket', href: '/ticketEdit' },
+      (Auth.user_type() == 'Agent'? { label: 'Reports', href: '/my_reports' }:{}),
+      (Auth.user_type() == 'Admin'? { label: 'Reports', href: '/my_reports' }:{}),
       (Auth.user_type() == 'Admin'? { label: 'Users', href: '/users' }:{}),
       { label:'Logout', href:'/logout' }
     ]:[
@@ -34,7 +36,7 @@ var Navbar = module.exports = {
           m('button.navbar-toggle', {onclick: ctrl.toggle}, m('.glyphicon.glyphicon-chevron-' + ctrl.iconDirection())),
           m("a.navbar-brand[href='/']", {config: m.route}, "Crossover Ticket System")
         ),
-        m(".navbar-collapse." + ctrl.iconDirection(), 
+        m(".navbar-collapse." + ctrl.iconDirection(),
           m("ul.nav.navbar-nav.navbar-right", ctrl.links())
         )
       ])
