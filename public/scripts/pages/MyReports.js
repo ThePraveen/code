@@ -44,7 +44,7 @@ var Tickets = module.exports = {
       mc.Datatable.view(ctrl.datatable, {
         caption: 'Tickets closed last month'
       }),
-      m("a.btn.btn-primary.pull-right[href='/report_1507516457.pdf']", {config: m.route}, "Export Report")
+      m("a.btn.btn-primary.pull-right[href='/download_report']", {config: m.route}, "Export Report")
     ])];
   }
 };
