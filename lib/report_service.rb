@@ -3,7 +3,7 @@ class ReportService
     def generate_report(tickets)
       byebug
       pdf = ReportPdf.new tickets
-      file_path = "#{Rails.root.to_s}/public/report_#{Time.now.to_i}.pdf"
+      file_path = "#{Rails.root.to_s}/public/downloaded_reports/reportsreport_#{Time.now.to_i}.pdf"
       pdf.render_file(file_path)
       file_path
     end
