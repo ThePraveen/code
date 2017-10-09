@@ -9,16 +9,16 @@ class TicketsController < ApplicationController
   end
 
   def view_report
-    start_date = params[:start_date].presence || DateTime.now.beginning_of_day.beginning_of_month
-    end_date = params[:end_date].presence || DateTime.now.beginning_of_day.end_of_month
+    start_date = params[:start_date].presence || 1.month.ago.beginning_of_month
+    end_date = params[:end_date].presence || 1.month.ago.end_of_month
     @current_user.tickets_closed_between(start_date, end_date)
     tickets = Ticket.closed_tickets(start_date, end_date).where(:agent_id => @current_user)
     render json: tickets
   end
 
   def download_report
-    start_date = params[:start_date].presence || DateTime.now.beginning_of_day.beginning_of_month
-    end_date = params[:end_date].presence || DateTime.now.beginning_of_day.end_of_month
+    start_date = params[:start_date].presence || 1.month.ago.beginning_of_month
+    end_date = params[:end_date].presence || 1.month.ago.end_of_month
     @current_user.tickets_closed_between(start_date, end_date)
     tickets = Ticket.closed_tickets(start_date, end_date).where(:agent_id => @current_user)
     render json: {report_file: ReportService.generate_report(tickets)}
