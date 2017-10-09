@@ -160,7 +160,6 @@ RSpec.describe TicketsController, type: :controller do
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           request.headers[:Authorization] = agent.token
-          byebug
 
           get :view_report, params: {}
           expect(response.status).to be(200)
@@ -180,9 +179,7 @@ RSpec.describe TicketsController, type: :controller do
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           request.headers[:Authorization] = agent.token
-          get :report, params: { user_id: agent.id,
-                                 start_date: (Date.today-2.days).strftime('%d-%m-%Y')
-                               }
+          get :view_report, params: {}
           expect(response.status).to be(200)
 
           body = JSON.parse(response.body)
@@ -200,13 +197,12 @@ RSpec.describe TicketsController, type: :controller do
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           request.headers[:Authorization] = agent.token
-          get :report, params: { user_id: agent.id
-                               }
+          get :view_report, params: { }
           expect(response.status).to be(200)
 
           body = JSON.parse(response.body)
 
-          expect(body.count).to eq(0)
+          expect(body.count).to eq(2)
         end
 
         it 'raised exception while getting the list of closed tickets from last month for an invalid agent' do
@@ -219,13 +215,10 @@ RSpec.describe TicketsController, type: :controller do
           agent.tickets.build(title: ticket2,body:Faker::Lorem.sentence(3, true, 10),done_date: DateTime.now,status: 'closed').save
 
           request.headers[:Authorization] = agent.token
-          get :report, params: { user_id: (agent.id+5)
-                               }
-          expect(response.status).to be(404)
+          get :view_report, params: {}
+          expect(response.status).to be(200)
 
           body = JSON.parse(response.body)
-
-          expect(body["error"]).to eq("Agent not found")
         end
       end
     end
