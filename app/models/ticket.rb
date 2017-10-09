@@ -4,8 +4,6 @@ class Ticket < ApplicationRecord
 
   scope :closed_tickets, -> (start_date, end_date){ where(status: :closed).where(:done_date => [start_date..end_date]) }
 
-  scope :last_month_closed_tickets, -> { where(status: :closed).where(:done_date => [DateTime.now.beginning_of_day.beginning_of_month..DateTime.now.beginning_of_day.end_of_month]) }
-
   # has_many :comments, class_name: 'Comment'
   has_many :comments
 
