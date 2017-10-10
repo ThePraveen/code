@@ -17,6 +17,17 @@ var Ticket = module.exports = {
         });
     },
 
+    ticket_pdf: function () {
+      return m.request({
+          method: 'get',
+          url: '/download_report',
+          config: function (xhr) {
+            xhr.setRequestHeader('Authorization', Auth.token());
+            },
+          data: { file_url: report_file }
+      });
+    },
+
     download: function () {
         return m.request({
             method: 'get',

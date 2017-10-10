@@ -15,6 +15,15 @@ var Tickets = module.exports = {
       return value;
     }
 
+    Ticket.ticket_pdf()
+    .then(function(){
+          ctrl.error(m(".alert.alert-success.animated.fadeInUp", 'user has been saved'));
+      }, function(err){
+        var message = 'An error occurred.';
+        
+        ctrl.error(m(".alert.alert-danger.animated.fadeInUp", message));
+      });
+
     this.datatable = new mc.Datatable.controller(
       // Columns definition:
       [

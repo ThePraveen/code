@@ -13,7 +13,6 @@ class TicketsController < ApplicationController
     end_date = params[:end_date].presence || 1.month.ago.end_of_month
     @current_user.tickets_closed_between(start_date, end_date)
     tickets = Ticket.closed_tickets(start_date, end_date).where(:agent_id => @current_user)
-    ReportService.generate_report(tickets)
     render json: tickets
   end
 
