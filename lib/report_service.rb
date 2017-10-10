@@ -3,9 +3,10 @@ class ReportService
 
     def generate_report(tickets)
       pdf = ReportPdf.new tickets
-      file_path = "#{Rails.root.to_s}/public/report_#{Time.now.to_i}.pdf"
+      file_name = "report_#{Time.now.to_i}.pdf"
+      file_path = "#{Rails.root.to_s}/public/#{file_name}"
       pdf.render_file(file_path)
-      file_path
+      file_name
     end
 
     def generate_and_send_report(tickets)

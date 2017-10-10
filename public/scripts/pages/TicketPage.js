@@ -21,7 +21,6 @@ var TicketPage = module.exports = {
 
     Ticket.get(m.route.param().id)
       .then(function (ticket) {
-
         ctrl.ticket = m.prop(ticket)
       }, function (err) {
         var message = 'An error occurred.';
@@ -34,7 +33,8 @@ var TicketPage = module.exports = {
     return [Navbar, m('.container', [[
       m("h2", "Ticket"),
       ctrl.error(),
-      m("p", ctrl.ticket().ticket.title),m("p", ctrl.ticket().ticket.body),
+      m("p", ctrl.ticket().ticket.title),
+      m("p", ctrl.ticket().ticket.body),
       m("table.table.table-condensed.table-bordered", [
         m("thead", [
           m("tr", [
@@ -58,7 +58,7 @@ var TicketPage = module.exports = {
         ])
       ]),
 
-      ctrl.ticket().ticket.status == 'closed' ? m("button.btn.btn-warning", { onclick: ctrl.open.bind(ctrl, 'opened') }, "Opened") :
+      ctrl.ticket().ticket.status == 'closed' ? m("button.btn.btn-warning", { onclick: ctrl.open.bind(ctrl, 'opened') }, "ReOpen") :
         m("button.btn.btn-danger", { onclick: ctrl.open.bind(ctrl, 'closed') }, "Close")
       ]]
     )];

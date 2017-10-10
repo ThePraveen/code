@@ -8,8 +8,8 @@ var Navbar = module.exports = {
     [
       { label: 'Tickets', href: '/tickets' },
       { label: 'New Ticket', href: '/ticketEdit' },
-      (Auth.user_type() == 'Agent'? { label: 'Reports', href: '/my_reports' }:{}),
-      (Auth.user_type() == 'Admin'? { label: 'Reports', href: '/my_reports' }:{}),
+      // (Auth.user_type() == 'Agent'? { label: 'Reports', href: '/my_reports' }:{}),
+      (Auth.user_type() != 'Customer'? { label: 'Reports', href: '/my_reports' }:{}),
       (Auth.user_type() == 'Admin'? { label: 'Users', href: '/users' }:{}),
       { label:'Logout', href:'/logout' }
     ]:[

@@ -6,7 +6,7 @@ var User = module.exports = {
     //     , department_id: integer, priorety: integer, done_date: datetime, created_at: datetime,
     //      updated_at: datetime }
 
-    all: function () {
+    all: function (id) {
       return m.request({
           method: 'get',
           url: '/users',

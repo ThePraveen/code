@@ -24,7 +24,6 @@ var Ticket = module.exports = {
           config: function (xhr) {
             xhr.setRequestHeader('Authorization', Auth.token());
             },
-          data: { file_url: report_file }
       });
     },
 

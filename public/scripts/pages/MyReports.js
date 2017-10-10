@@ -15,14 +15,26 @@ var Tickets = module.exports = {
       return value;
     }
 
+
     Ticket.ticket_pdf()
-    .then(function(){
-          ctrl.error(m(".alert.alert-success.animated.fadeInUp", 'user has been saved'));
-      }, function(err){
+      .then(function (report) {
+        ctrl.report  = report
+      }, function (err) {
         var message = 'An error occurred.';
-        
+        m.route('/reports')
         ctrl.error(m(".alert.alert-danger.animated.fadeInUp", message));
       });
+
+    // Ticket.ticket_pdf()
+    // .then(function(report_file){
+    //     ctrl.report_file = report_file
+    //     ctrl.error(m(".alert.alert-success.animated.fadeInUp", 'user has been saved'));
+    //   }, function(err){
+    //     var message = 'An error occurred.';
+        
+    //     ctrl.error(m(".alert.alert-danger.animated.fadeInUp", message));
+    //   });
+
 
     this.datatable = new mc.Datatable.controller(
       // Columns definition:
@@ -52,8 +64,8 @@ var Tickets = module.exports = {
       m('h1', 'Last Month Report'),
       mc.Datatable.view(ctrl.datatable, {
         caption: 'Tickets closed last month'
-      }),
-      m("a.btn.btn-primary.pull-right[href='/download_report']", {config: m.route}, "Export Report")
+      }),      
+      m("a.btn.btn-primary.btn-xs.pull-right[href='/" + ctrl.report.report_file + "'][target='_blank']", "Download PDF")
     ])];
   }
 };

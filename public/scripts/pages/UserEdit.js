@@ -4,8 +4,9 @@ var Auth = require('../models/Auth.js');
 var User = require('../models/User.js');
 
 var UserEdit = module.exports = {
-  controller: function(){
-    ctrl = this;
+
+  controller: function(args){
+    var ctrl = this;
     ctrl.navbar = new Navbar.controller();
     ctrl.error = m.prop('');
 
@@ -17,29 +18,39 @@ var UserEdit = module.exports = {
           ctrl.error(m(".alert.alert-success.animated.fadeInUp", 'user has been saved'));
         }, function(err){
           var message = 'An error occurred.';
-          
+
           ctrl.error(m(".alert.alert-danger.animated.fadeInUp", message));
         });
     };
+
+    User.get(m.route.param().id)
+      .then(function (user) {
+        ctrl.user = user
+      }, function (err) {
+        var message = 'An error occurred.';
+        m.route('/users')
+        ctrl.error(m(".alert.alert-danger.animated.fadeInUp", message));
+      });
+
   },
 
   view: function(ctrl){
     return [Navbar.view(ctrl.navbar), m(".container", [
       m("form.text-center.row.form-user-edit", {onsubmit:ctrl.get.bind(ctrl)},
         m('.col-sm-6.col-sm-offset-3', [
-          m("h1", "Edit User"),
           ctrl.error(),
+          m("h1", ctrl.user.name),
           m('.form-group', [
             m("label.[for='inputName']", "Name"),
-            m("input.form-control[name='name'][autofocus][id='inputTitle'][placeholder='Name '][required][type='text']"),
+            m("input.form-control[name='name'][autofocus][id='inputTitle'][placeholder='Name '][type='text']", {value: ctrl.user.name}),
           ]),
           m('.form-group', [
             m("label.[for='inputPhone']", "Phone"),
-            m("input.form-control[name='phone'][autofocus][id='inputbody'][placeholder='Phone '][required][type='text']"),
+            m("input.form-control[name='phone'][autofocus][id='inputbody'][placeholder='Phone '][type='text']", {value: ctrl.user.phone}),
           ]),
           m('.form-group.pull-left', [
             m("label.[for='inputStatus']", "Status"),
-            m("input[name='status'][autofocus][id='inputStatusBlock'][value='blocked'][type='radio']"),
+            m("input[name='status'][autofocus][id='inputStatusBlock'][value='blocked'][type='radio']", {}),
             m("label.radio-inline", "Block"),
             m("input.ml-20[name='status'][autofocus][id='inputStatusUnblock'][value='unblocked'][type='radio']"),
             m("label.radio-inline", "Unblock"),
