@@ -16,6 +16,7 @@ var users = module.exports = {
     this.datatable = new mc.Datatable.controller(
       // Columns definition:
       [
+        { key: "name",label: "Name" },
         { key: "email",label: "Email" },
         { key: "phone",label: "Phone" },
         { key: "type",label: "Type" },

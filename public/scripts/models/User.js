@@ -19,11 +19,10 @@ var User = module.exports = {
     get: function (id) {
         return m.request({
             method: 'get',
-            url: '/users/'+id,
+            url: '/users/'+ id,
             config: function (xhr) {
-        xhr.setRequestHeader('Authorization', Auth.token());
-    }
-
+                xhr.setRequestHeader('Authorization', Auth.token());
+            }
         });
     },
 

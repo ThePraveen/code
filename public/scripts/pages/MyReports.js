@@ -15,6 +15,8 @@ var Tickets = module.exports = {
       return value;
     }
 
+
+
     this.datatable = new mc.Datatable.controller(
       // Columns definition:
       [
@@ -44,7 +46,8 @@ var Tickets = module.exports = {
       mc.Datatable.view(ctrl.datatable, {
         caption: 'Tickets closed last month'
       }),
-      m("a.btn.btn-primary.pull-right[href='/download_report']", {config: m.route}, "Export Report")
+      m("a.btn.btn-primary.pull-right[href='http://localhost:3000/report_1507598505.pdf'][target='_blank']", "Export Report")
+
     ])];
   }
 };
