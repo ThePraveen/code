@@ -20,7 +20,8 @@ ticket3 = customer1.tickets.create!(:title => "I want to return the product", :b
 
 ticket4 = customer2.tickets.create!(:title => "My account not working", :body => "I tried logging in", :agent_id => agent1.id)
 ticket5 = customer2.tickets.create!(:title => "ticket5", :body => "I tried logging in", :agent_id => agent1.id)
-ticket6 = customer2.tickets.create!(:title => "ticket6", :body => "I tried logging in", :agent_id => agent1.id)
+ticket6 = customer2.tickets.create!(:title => "ticket6", :body => "I tried logging in", :agent_id => agent1.id, :status => "closed")
+ticket8.update!(:done_date => 1.month.ago.beginning_of_month + 2.day)
 
 ticket7 = customer3.tickets.create!(:title => "My account not working", :body => "I tried logging in", :agent_id => admin1.id)
 ticket8 = customer3.tickets.create!(:title => "My account not working", :body => "I tried logging in", :status => "closed", :agent_id => admin1.id, :created_at => 1.month.ago.beginning_of_month + 1.day)
